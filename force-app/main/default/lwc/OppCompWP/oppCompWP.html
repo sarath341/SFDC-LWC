@@ -1,0 +1,29 @@
+<template>
+<!-- Iterate through oppList.data and display Name, CloseDate, StageName,
+and Amount using custom data table approach -->
+<table class ="slds-table 
+                slds-table_bordered 
+                slds-table_striped 
+                slds-table_col-bordered">
+    
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Stage Name</th>
+            <th>Close Date</th>
+            <th>Amount</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <template for:each={oppList.data} for:item="opp">
+            <tr key={opp.Id}> <!-- Key is must for the element inside template for each -->
+                <td>{opp.Name}</td>
+                <td>{opp.StageName}</td>
+                <td>{opp.CloseDate}</td>
+                <td>{opp.Amount}</td>
+            </tr>
+        </template>
+    </tbody>
+</table>
+</template>

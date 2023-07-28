@@ -1,0 +1,30 @@
+<template>
+<lightning-card  title="Wiring with function">
+    <table class ="slds-table 
+                slds-table_bordered 
+                slds-table_striped 
+                slds-table_col-bordered">
+                <thead>
+                    <tr>
+                        <th>Name </th>
+                        <th>Stage Name </th>
+                        <th>Close Date </th>
+                        <th>Amount </th>
+                        <th>Commission </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={oppList} for:item="opp">
+                        <tr key={opp.Id}>
+                            <td>{opp.Name}</td>
+                            <td>{opp.Stage}</td>
+                            <td>{opp.CloseDate}</td>
+                            <td>{opp.Amount}</td>
+                            <td>{opp.Commission}</td>
+                        </tr>
+                    </template>
+                </tbody>
+    </table>
+    
+</lightning-card>
+</template>

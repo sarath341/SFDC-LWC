@@ -1,0 +1,29 @@
+<template>
+<lightning-card  title="Wiring with function">
+    <table class ="slds-table 
+                slds-table_bordered 
+                slds-table_striped 
+                slds-table_col-bordered">
+                <thead>
+                    <tr>
+                        <th>Full Name </th>
+                        <th>Full Name </th>
+                        <th>Email </th>
+                        <th>Lead Source</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={conList} for:item="con">
+                        <tr key={con.Id}>
+                            <td>{con.FirstName},{con.LastName} </td>
+                            <td>{con.varName}</td>
+                            
+                            <td>{con.Email}</td>
+                            <td>{con.LeadSource}</td>
+                        </tr>
+                    </template>
+                </tbody>
+    </table>
+    
+</lightning-card>
+</template>

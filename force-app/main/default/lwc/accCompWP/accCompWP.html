@@ -1,0 +1,23 @@
+<template>
+<table class="slds-table
+                slds-table_bordered 
+                slds-table_col-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Annual Revenue</th>
+            <th>Rating</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        <template for:each={accList.data} for:item="acc">
+            <tr key={acc.Id}>
+                <td>{acc.Name}</td>
+                <td>{acc.AnnualRevenue}</td>
+                <td>{acc.Rating}</td>
+            </tr>
+        </template>
+    </tbody>
+</table>
+</template>
