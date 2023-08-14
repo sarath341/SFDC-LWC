@@ -1,0 +1,30 @@
+.blink {
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    padding: 10px;
+    text-align: center;
+    line-height: 40px;
+}
+
+span {
+    font-size: 20px;
+    font-weight:bolder;
+    font-family:sans-serif;
+    color: #de7383;
+    animation: blink 0.5s linear infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: .5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+	<isExposed>true</isExposed>
+    <masterLabel>InfoChannel</masterLabel>
+    <description>This Channel is used to send the payload to all the Subscribers</description>
+</LightningMessageChannel>

@@ -1,0 +1,43 @@
+<template>
+    <lightning-card title="Case report">
+        <lightning-layout>
+            <lightning-layout-item size="8">
+                <table class="slds-table
+                slds-table_bordered 
+                slds-table_col-bordered">
+                    <thead>
+                        <tr>
+                            <th>Case Number</th>
+                            <th>Status</th>
+                            <th>Priority</th>
+                            <th>Subject</th>
+                            <th>Close Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={caseList.data} for:item="eachCase">
+                            <tr key={eachCase.Id} data-sid={eachCase.Id} onclick={handleClick}>
+                                <td>{eachCase.CaseNumber}</td>
+                                <td>{eachCase.Status}</td>
+                                <td>{eachCase.Priority}</td>
+                                <td>{eachCase.Subject}</td>
+                                <td>{eachCase.ClosedDate}</td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </lightning-layout-item>
+            <lightning-layout-item size="4">
+                <lightning-record-view-form
+                  object-api-name="Case"
+                  record-id={selectedCaseId}
+                >
+                <div class="slds-box">
+                    <lightning-output-field field-name="Status"></lightning-output-field>
+                    <lightning-output-field field-name="Subject"></lightning-output-field>
+                </div>
+                </lightning-record-view-form>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>

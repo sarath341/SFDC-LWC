@@ -1,0 +1,31 @@
+<template>
+    <div class="slds-box">
+        <lightning-vertical-navigation onselect={handleSelect}>
+            <lightning-vertical-navigation-section label="Browse">
+                <lightning-vertical-navigation-item-icon
+                  label="Contact Browser" 
+                  name="browse" 
+                  icon-name="standard:groups"
+                ></lightning-vertical-navigation-item-icon>
+                <lightning-vertical-navigation-item-icon
+                  label="Case Reports" 
+                  name="reports" 
+                  icon-name="standard:case"
+                ></lightning-vertical-navigation-item-icon>
+            </lightning-vertical-navigation-section>
+            <lightning-vertical-navigation-section label="Deals">
+                <lightning-vertical-navigation-item-icon
+                  label="Opportunity Graphs" 
+                  name="graphs"
+                  icon-name="utility:metrics"
+                ></lightning-vertical-navigation-item-icon>
+                <lightning-vertical-navigation-item-icon
+                  label="Opportunity Records" 
+                  name="deals" 
+                  icon-name="standard:opportunity"
+                ></lightning-vertical-navigation-item-icon>
+              
+            </lightning-vertical-navigation-section>
+        </lightning-vertical-navigation>
+    </div>
+</template>

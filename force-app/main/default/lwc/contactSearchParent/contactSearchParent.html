@@ -1,0 +1,32 @@
+<template>
+    <div>
+        <c-contact-search-child oncontactclick={handleContactClick}></c-contact-search-child>
+    </div>
+    <lightning-card title="Contact Results" icon-name="standard:contact" variant="narrow">
+        <template lwc:if={conList}>
+            <table class="slds-table slds-table_bordered">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <template for:each={conList} for:item="con">
+                        <tr key={con.Id}>
+                            <td>{con.FirstName}</td>
+                            <td>{con.LastName}</td>
+                            <td>{con.Email}</td>
+                        </tr>
+                    </template>
+
+                </tbody>
+            </table>
+        </template>
+        <template if:true={emptyList}>
+            No Records Found
+        </template>
+    </lightning-card>
+</template>

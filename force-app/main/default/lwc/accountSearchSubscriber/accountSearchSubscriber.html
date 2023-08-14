@@ -1,0 +1,27 @@
+<template>
+    <lightning-card title="Account Subscriber">
+        <table class="slds-table slds-table_bordered">
+            <thead>
+                <tr>
+                    <th>Account Name</th>
+                    <th>Phone</th>
+                    <th>Annual Revenue</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template if:true={isListEmpty}>
+                    No Records found
+                </template>
+                <template if:false={isListEmpty}>
+                    <template for:each={accList} for:item="acc">
+                        <tr key={acc.Id}>
+                            <td>{acc.Name}</td>
+                            <td>{acc.Phone}</td>
+                            <td>{acc.AnnualRevenue}</td>
+                        </tr>
+                    </template>
+                </template>
+            </tbody>
+        </table>
+    </lightning-card>
+</template>

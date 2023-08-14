@@ -1,0 +1,28 @@
+<template>
+    <template if:true={showModal}>
+        <c-contact-modal onmodalclose={handleModalClose}></c-contact-modal>
+    </template>
+    
+    <lightning-card title="Contact Detail">
+        <div slot="actions">
+            <lightning-button label="Email" variant="destructive" onclick={sendEmail}></lightning-button>
+            <lightning-button icon-name="utility:preview" label="View" onclick={viewRecord}></lightning-button>
+            <lightning-button icon-name="utility:edit" label="Edit" onclick={editRecord}></lightning-button>
+        </div>
+        <lightning-record-view-form object-api-name="Contact" record-id={selectedContactId}>
+            <div class="slds-box">
+                <lightning-output-field field-name="FirstName"></lightning-output-field>
+                <lightning-output-field field-name="LastName"></lightning-output-field>
+                <lightning-output-field field-name="Email"></lightning-output-field>
+                <lightning-output-field field-name="Phone"></lightning-output-field>
+            </div>
+            <div class="slds-box">
+                <lightning-output-field field-name="MailingCity"></lightning-output-field>
+                <lightning-output-field field-name="MailingCountry"></lightning-output-field>
+            </div>
+        </lightning-record-view-form>
+        <div slot="footer">
+            <c-contact-map selected-contact-id={selectedContactId}></c-contact-map>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,27 @@
+<template>
+    <div class="slds-box">
+        <table class="slds-table slds-table_bordered slds-table_col-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Title</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={conList} for:item="con">
+                    <!--Add a custom attribute to tr tag, so that we could store salesforceId
+                    of the contact record thats been clicked
+                Custom attributes are defined usind data-<name-of-the-attribute> -->
+                    <tr key={con.Id} data-sid={con.Id} onclick={handleClick}>
+                        <td>{con.Name}</td>
+                        <td>{con.Title}</td>
+                        <td>{con.Email}</td>
+                        <td>{con.Phone}</td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+</template>

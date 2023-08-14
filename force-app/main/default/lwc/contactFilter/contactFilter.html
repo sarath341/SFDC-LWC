@@ -1,0 +1,11 @@
+<template>
+    <lightning-card title='Contact Filter' icon-name="standard:search">
+        <lightning-combobox 
+        name="progress"
+        label="Status"
+        placeholder="Select Account"
+        options={accountComboList}
+        onchange={handleOnChange}
+        ></lightning-combobox>
+    </lightning-card>
+</template>

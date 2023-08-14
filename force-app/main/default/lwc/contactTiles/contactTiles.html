@@ -1,0 +1,9 @@
+<template>
+    <!--Iterate through conList and pass each contact info to
+    the child component called contactTile-->
+    <div class="slds-box">
+        <template for:each={conList} for:item="con">
+            <c-contact-tile selected-contact-id={selectedContactId} oncontactclick={handleContactClick} key={con.Id} contact={con}></c-contact-tile>
+        </template>
+    </div>
+</template>

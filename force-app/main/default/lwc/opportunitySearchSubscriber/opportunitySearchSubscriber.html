@@ -1,0 +1,29 @@
+<template>
+    <lightning-card title="Opportunity Subscriber">
+        <table class="slds-table slds-table_bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Stage Name</th>
+                    <th>Amount</th>
+                    <th>Account Name (From Parent)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template if:true={isListEmpty}>
+                    No Records found
+                </template>
+                <template if:false={isListEmpty}>
+                    <template for:each={oppList} for:item="opp">
+                        <tr key={opp.Id}>
+                            <td>{opp.Name}</td>
+                            <td>{opp.StageName}</td>
+                            <td>{opp.Amount}</td>
+                            <td>{opp.Account.Name}</td>
+                        </tr>
+                    </template>
+                </template>
+            </tbody>
+        </table>
+    </lightning-card>
+</template>

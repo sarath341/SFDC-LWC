@@ -1,0 +1,27 @@
+<template>
+    <lightning-card title="Contact Subscriber">
+        <table class="slds-table slds-table_bordered">
+            <thead>
+                <tr>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template if:true={isListEmpty}>
+                    No Records found
+                </template>
+                <template if:false={isListEmpty}>
+                    <template for:each={conList} for:item="con">
+                        <tr key={con.Id}>
+                            <td>{con.LastName}</td>
+                            <td>{con.FirstName}</td>
+                            <td>{con.Email}</td>
+                        </tr>
+                    </template>
+                </template>
+            </tbody>
+        </table>
+    </lightning-card>
+</template>
