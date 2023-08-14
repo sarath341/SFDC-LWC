@@ -36,5 +36,4 @@ export default class CalculatorComp extends LightningElement {
     handleBlurSecondNumber(event){
         this.secondNumber = event.target.value;
     }
-
 }

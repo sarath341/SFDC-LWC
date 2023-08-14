@@ -1,9 +1,11 @@
 <template>
-    <div class="sdlds-box slds-theme_shade">
+    <div class="slds-box slds-theme_shade">
         <div>
             Callback vs Arrow
         </div>
         Todays Date Time : {todaysTime}
-        <lightning-button label="Refresh" onclick={updateDateTimeUsingArrow}></lightning-button>
+    <br>
+        <lightning-button label="Refresh CB" onclick={updateDateTimeUsingCallback}></lightning-button>
+        <lightning-button label="Refresh AW" onclick={updateDateTimeUsingArrow}></lightning-button>
     </div>
 </template>

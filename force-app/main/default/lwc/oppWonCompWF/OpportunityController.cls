@@ -1,8 +1,14 @@
 public class OpportunityController {
     @AuraEnabled(cacheable=true)
     public static List<Opportunity> getAllOpportunities(){
-        return [SELECT Name, StageName, CloseDate, Amount
-                FROM Opportunity];
+        try{
+            return [SELECT Name, StageName, CloseDate, Amount
+            FROM Opportunity];
+        }
+        catch(Exception e){
+            throw new AuraEnabledException(e.getMessage());
+        }
+        
     }
     @AuraEnabled(cacheable=true)
     public static List<Opportunity> getCwOpportunities(){

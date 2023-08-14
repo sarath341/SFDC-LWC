@@ -1,6 +1,6 @@
 import { LightningElement, wire } from 'lwc';
 import getAllOpportunities from '@salesforce/apex/OpportunityController.getAllOpportunities';
-export default class OppCompWP extends LightningElement {
+export default class oppCompWP extends LightningElement {
 //Wire the Apex Method to a Property
 @wire(getAllOpportunities) oppList;
 //oppList contains 2 Server Injected Properties
