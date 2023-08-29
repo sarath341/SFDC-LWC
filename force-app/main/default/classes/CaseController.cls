@@ -13,7 +13,7 @@ public with sharing class CaseController {
     @AuraEnabled(cacheable=true)
     public static List<Case> getSelectedPillsPriority(String pillsObject){
         System.debug(pillsObject);
-        /*
+        /* Test
         List<Map<String, String>> data = (List<Map<String, String>>) JSON.deserializeUntyped(pillsObject);
         System.debug(data);
         
