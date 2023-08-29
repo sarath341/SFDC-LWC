@@ -1,0 +1,196 @@
+<template>
+    <div class="slds-box slds-theme_shade">
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_1-of-12">
+            </div>
+            <div class="slds-col slds-size_9-of-12">
+                <template for:each={caseList} for:item="eachCase">
+                    <lightning-card key={eachCase.Id} data-sid={eachCase.Id} onclick={handleClick}>
+                        <div class="slds-einstein-header slds-card__header">
+                            <lightning-layout>
+                                <lightning-layout-item size="2">
+                                    <lightning-icon icon-name="standard:case" size="large"></lightning-icon><br>
+                                    {eachCase.CaseNumber}
+                                </lightning-layout-item>
+                                <lightning-layout-item size="9">
+                                    <h2 class="slds-truncate" title="Subject">
+                                        <a href='#' onclick={viewRecord} class="slds-card__header-link" title="Subject">
+                                            <span class="slds-text-heading_medium">{eachCase.Subject}</span>
+                                        </a>
+                                    </h2>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="1">
+                                    <lightning-button-icon variant="brand-outline" icon-name="utility:delete"
+                                        onclick={handleDelete}></lightning-button-icon>
+                                    <lightning-button-menu variant="brand-outline" alternative-text="Show menu">
+                                        <lightning-menu-item value="view" label="View" onclick={viewRecord}
+                                            icon-name="utility:preview"></lightning-menu-item>
+                                        <lightning-menu-item value="edit" label="Edit" onclick={editRecord}
+                                            icon-name="utility:edit"></lightning-menu-item>
+                                    </lightning-button-menu>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                            <lightning-layout>
+                                <lightning-layout-item size="2"></lightning-layout-item>
+                                <lightning-layout-item size="4">Priority: <span
+                                        class="slds-badge">{eachCase.Priority}</span></lightning-layout-item>
+                                <lightning-layout-item size="1"></lightning-layout-item>
+                                <lightning-layout-item size="4">Closed Date: <span
+                                        class="slds-badge">{eachCase.ClosedDate}</span></lightning-layout-item>
+                            </lightning-layout>
+                        </div>
+                        <div slot="footer">
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-col slds-size_2-of-12">
+                                    Status: <span class="slds-badge blue-badge">{eachCase.Status}</span>
+                                </div>
+                                <div class="slds-col slds-size_8-of-12">
+                                    <lightning-badge label="Status Values" class="blue-badge"></lightning-badge><br>
+                                    <!-- <c-case-progress case-status={eachCase.Status}></c-case-progress> -->
+                                    <div>
+                                        <lightning-progress-indicator current-step={eachCase.Status} type="base"
+                                            has-error="true" variant="base">
+                                            <lightning-progress-step label="New"
+                                                value="New"></lightning-progress-step>
+                                            <lightning-progress-step label="Working"
+                                                value="Working"></lightning-progress-step>
+                                            <lightning-progress-step label="Escalated"
+                                                value="Escalated"></lightning-progress-step>
+                                            <lightning-progress-step label="Closed"
+                                                value="Closed"></lightning-progress-step>
+                                        </lightning-progress-indicator>
+                                    </div>
+                                    <lightning-button variant="brand" label="View Account Info"
+                                        onclick={handleAccInfo}></lightning-button>
+                                    <template if:true={popOver}>
+                                        <div>
+                                            <!--class="slds-popover slds-nubbin_top slds-popover_walkthrough-alt"-->
+                                            <section aria-describedby="dialog-body-id-118"
+                                                aria-labelledby="dialog-heading-id-123" aria-label="Dialog Title"
+                                                class="slds-popover slds-nubbin_top slds-popover_walkthrough-alt slds-popover_full-width"
+                                                role="dialog">
+                                                <button
+                                                    class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"
+                                                    title="Close dialog">
+                                                    <svg class="slds-button__icon" aria-hidden="true">
+                                                        <use
+                                                            xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close">
+                                                        </use>
+                                                    </svg>
+                                                    <span class="slds-assistive-text">Close dialog</span>
+                                                </button>
+                                                <div class="slds-popover__body" id="dialog-body-id-123">
+                                                    <div class="slds-media">
+                                                        <div class="slds-media__body">
+
+                                                            <lightning-record-view-form object-api-name="Account"
+                                                                record-id={eachCase.AccountId}>
+                                                                <div class="slds-box">
+                                                                    <div class="slds-grid">
+                                                                        <lightning-output-field
+                                                                            field-name="Name"></lightning-output-field>
+                                                                        <lightning-output-field
+                                                                            field-name="Type"></lightning-output-field>
+                                                                        <lightning-output-field
+                                                                            field-name="AnnualRevenue"></lightning-output-field>
+                                                                        <lightning-output-field
+                                                                            field-name="Industry"></lightning-output-field>
+                                                                    </div>
+                                                                </div>
+                                                            </lightning-record-view-form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                        </div>
+                                    </template>
+                                </div>
+                                <div class="slds-col slds-size_2-of-12">
+                                    Type: <span class="slds-badge blue-badge">{eachCase.Type}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </lightning-card>
+                    &nbsp;
+                </template>
+            </div>
+            <div class="slds-col slds-size_2-of-12">
+            </div>
+        </div>
+    </div>
+</template>
+
+
+
+
+<!--
+    
+    <template>
+    <div class="slds-grid">
+        <div class="slds-col slds-size_1-of-12">
+        </div>
+        <div class="slds-col slds-size_9-of-12">
+            <div class="slds-grid">
+                <div class="slds-col slds-size_12-of-12 slds-einstein-header slds-card__header">
+                    <template for:each={caseList} for:item="eachCase">
+                        <div key={eachCase.Id} class="card">
+                            <lightning-card icon-name="standard:case" variant="base">
+
+                                <div><small>{eachCase.CaseNumber}</small></div>
+                                <div>Priority: {eachCase.Priority}</div>
+                                <div>Closed Date : {eachCase.ClosedDate}</div>
+                                <div slot="actions">
+                                    <lightning-button icon-name="utility:delete"
+                                        onclick={handleDelete}></lightning-button>
+                                    <lightning-button-menu alternative-text="Show menu">
+                                        <lightning-menu-item value="view" label="View"
+                                            icon-name="utility:preview"></lightning-menu-item>
+                                        <lightning-menu-item value="edit" label="Edit"
+                                            icon-name="utility:edit"></lightning-menu-item>
+                                    </lightning-button-menu>
+                                </div>
+                                <div slot="footer">
+                                    <c-g-progress-bar></c-g-progress-bar>
+                                    <button class="slds-button slds-button_brand">View Account Info</button>
+                                    <div>
+                                        <section aria-describedby="dialog-body-id-111" aria-label="Dialog Title"
+                                            class="slds-popover slds-nubbin_top" role="dialog">
+                                            <button
+                                                class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"
+                                                title="Close dialog">
+                                                <svg class="slds-button__icon" aria-hidden="true">
+                                                    <use
+                                                        xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close">
+                                                    </use>
+                                                </svg>
+                                                <span class="slds-assistive-text">Close dialog</span>
+                                            </button>
+                                            <div class="slds-popover__body" id="dialog-body-id-111">
+                                                <div class="slds-media">
+                                                    <div class="slds-media__body">
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                                                            do
+                                                            eiusmod
+                                                            tempor
+                                                            incididunt ut labore et dolore magna aliqua.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p>{eachCase.Subject}</p>
+                                </div>
+
+                            </lightning-card>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+        <div class="slds-col slds-size_1-of-12">
+        </div>
+    </div>
+</template>
+-->

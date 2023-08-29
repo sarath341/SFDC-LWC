@@ -1,51 +1,51 @@
-import { LightningElement, wire} from 'lwc';
+import { LightningElement, wire } from 'lwc';
 //1.2 Imports
 import { subscribe, MessageContext } from 'lightning/messageService';
 import IC from '@salesforce/messageChannel/InfoChannel__c';
-import {NavigationMixin} from 'lightning/navigation'
+import { NavigationMixin } from 'lightning/navigation'
 export default class ContactDetails extends NavigationMixin(LightningElement) {
     //2. Wire the MessageContext to a property
     @wire(MessageContext) msgContext;
-//Property to Show or Hide the modal comp
-showModal = false;
+    //Property to Show or Hide the modal comp
+    showModal = false;
 
     //Define a property to store salesforce ID
     selectedContactId;
 
     //3. Define 
-    connectedCallback(){
-        subscribe(this.msgContext,IC,
-            (message)=>{
+    connectedCallback() {
+        subscribe(this.msgContext, IC,
+            (message) => {
                 this.selectedContactId = message.conId;
-                console.log('contact detail::' +this.selectedContactId);
+                console.log('contact detail::' + this.selectedContactId);
             });
     }
 
-    sendEmail(){
+    sendEmail() {
         this.showModal = true;
     }
 
-    handleModalClose(){
+    handleModalClose() {
         this.showModal = false;
     }
 
-    viewRecord(){
+    viewRecord() {
         this[NavigationMixin.Navigate]({
             type: 'standard__recordPage',
-            attributes:{
+            attributes: {
                 objectApiName: 'Contact',
                 recordId: this.selectedContactId,
-                actionName:'view'
+                actionName: 'view'
             }
         });
     }
-    editRecord(){
+    editRecord() {
         this[NavigationMixin.Navigate]({
             type: 'standard__recordPage',
-            attributes:{
+            attributes: {
                 objectApiName: 'Contact',
                 recordId: this.selectedContactId,
-                actionName:'edit'
+                actionName: 'edit'
             }
         });
     }
