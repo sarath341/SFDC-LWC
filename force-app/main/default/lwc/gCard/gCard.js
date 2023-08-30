@@ -32,6 +32,7 @@ export default class GCard extends NavigationMixin(LightningElement) {
                 console.log('From gCard Subscriber: ' + JSON.stringify(this.selectedPills));
                 console.log('Type OF: ' + typeof this.selectedPills);
 
+                //Extract Seperate Picklist selected values
                 this.typeLabels = this.selectedPills.filter(item => item.id === 'Type').map(item => item.label);
                 this.priorityLabels = this.selectedPills.filter(item => item.id === 'Priority').map(item => item.label);
                 this.statusLabels = this.selectedPills.filter(item => item.id === 'Status').map(item => item.label);
